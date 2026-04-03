@@ -1,1 +1,349 @@
-TEST
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="$LUXURIOUS — coming soon on Base." />
+  <title>$LUXURIOUS — Coming Soon</title>
+  <style>
+    :root {
+      --bg: #070707;
+      --bg-soft: #101010;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --gold: #ffbf3f;
+      --gold-2: #ffdf87;
+      --lime: #8dff6f;
+      --text: #f6f1e8;
+      --muted: #b7ae9d;
+      --border: rgba(255, 191, 63, 0.18);
+      --shadow: 0 18px 60px rgba(255, 184, 48, 0.18);
+      --radius: 28px;
+      --content-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(255, 193, 61, 0.18), transparent 32%),
+        radial-gradient(circle at 100% 0%, rgba(141, 255, 111, 0.08), transparent 24%),
+        linear-gradient(180deg, #080808 0%, #050505 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(100%, var(--content-width));
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      text-align: center;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -20%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 191, 63, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 191, 63, 0.12);
+      border: 1px solid rgba(255, 191, 63, 0.24);
+      color: var(--gold-2);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .logo {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 1rem;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 30px rgba(255, 191, 63, 0.22);
+      background: rgba(255,255,255,0.04);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff4d1 0%, #ffbf3f 45%, #88ff60 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 1rem auto 0;
+      max-width: 34rem;
+      color: #e7dcc6;
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .ca-box {
+      margin: 1.75rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .contract-code {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-radius: 999px;
+      padding: 0.9rem 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: 100%;
+      min-height: 52px;
+    }
+
+    .contract-code strong {
+      color: var(--gold-2);
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+    }
+
+    .contract-code code {
+      font-size: 0.92rem;
+      color: #f4e7cc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .button,
+    .ghost,
+    .copy-btn,
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      border-radius: 999px;
+      padding: 0.95rem 1.2rem;
+      font-weight: 800;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      border: 1px solid transparent;
+      min-height: 52px;
+      cursor: pointer;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #ffca54 0%, #ffb11d 100%);
+      color: #130d02;
+      box-shadow: 0 16px 34px rgba(255, 183, 45, 0.26);
+    }
+
+    .ghost,
+    .copy-btn,
+    .social-link {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .button:hover,
+    .ghost:hover,
+    .copy-btn:hover,
+    .social-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .actions,
+    .socials {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .socials {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      border-radius: 18px;
+      justify-content: flex-start;
+      text-align: left;
+      padding-inline: 1rem;
+    }
+
+    .social-link strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .social-link span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 1.4rem;
+      }
+
+      .actions,
+      .socials {
+        grid-template-columns: 1fr;
+      }
+
+      .ca-box {
+        align-items: stretch;
+      }
+
+      .ca-box > * {
+        width: 100%;
+      }
+
+      .contract-code {
+        justify-content: center;
+      }
+
+      .contract-code code {
+        max-width: 210px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="badge">🔥 WE DID IT — $LUXURIOUS IS NOW LIVE ON BASE 🚀💎</div>
+
+      <img class="logo" src="assets/logo-star.jpg" alt="$LUXURIOUS logo" />
+
+      <h1>
+        <span class="gradient-text">$LUXURIOUS</span><br />
+        coming soon
+      </h1>
+
+      <p class="subtitle">
+        The next phase is on the way. Follow the project, keep the contract ready, and access the live buy and chart links below.
+      </p>
+
+      <div class="ca-box">
+        <div class="contract-code" title="Base contract address">
+          <strong>CA</strong>
+          <code id="contractAddress">0x9f7161cd6bdced685585797708c62af25173ae89</code>
+        </div>
+        <button class="copy-btn" data-copy="0x9f7161cd6bdced685585797708c62af25173ae89">Copy CA</button>
+      </div>
+
+      <div class="actions">
+        <a class="button" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">Buy</a>
+        <a class="ghost" href="https://dexscreener.com/base/0x8453e8a37505e6172b00Ef2878A5869c313F3e7D" target="_blank" rel="noopener noreferrer">Chart</a>
+      </div>
+
+      <div class="socials">
+        <a class="social-link" href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">
+          <div>
+            <strong>Telegram</strong>
+            <span>Join the community</span>
+          </div>
+        </a>
+
+        <a class="social-link" href="https://x.com/DJDean4You" target="_blank" rel="noopener noreferrer">
+          <div>
+            <strong>X / Twitter</strong>
+            <span>Follow updates</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="footer-note">
+        $LUXURIOUS — Building bridges. Creating visibility. Driving ecosystems.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const text = button.getAttribute('data-copy');
+        const original = button.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = 'Copied ✓';
+        } catch (error) {
+          button.textContent = 'Copy failed';
+        }
+        window.setTimeout(() => {
+          button.textContent = original;
+        }, 1600);
+      });
+    });
+  </script>
+</body>
+</html>

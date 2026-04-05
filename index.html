@@ -3,347 +3,1863 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="$LUXURIOUS — coming soon on Base." />
-  <title>$LUXURIOUS — Coming Soon</title>
+  <meta
+    name="description"
+    content="LUXURIOUS — Building Visibility in Crypto. A marketing-driven ecosystem connecting projects, communities and growth across Base and Pepe Unchained."
+  />
+  <title>LUXURIOUS — Building Visibility in Crypto</title>
   <style>
-    :root {
-      --bg: #070707;
-      --bg-soft: #101010;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.1);
-      --gold: #ffbf3f;
-      --gold-2: #ffdf87;
-      --lime: #8dff6f;
-      --text: #f6f1e8;
-      --muted: #b7ae9d;
-      --border: rgba(255, 191, 63, 0.18);
-      --shadow: 0 18px 60px rgba(255, 184, 48, 0.18);
-      --radius: 28px;
-      --content-width: 760px;
-    }
+:root {
+  --bg: #060606;
+  --bg-soft: #0d0d0d;
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --gold: #f2c75c;
+  --gold-2: #ffdf87;
+  --text: #f6f1e8;
+  --muted: #b7ae9d;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-gold: rgba(242, 199, 92, 0.28);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  --radius: 24px;
+  --header-height: 88px;
+  --content-width: 1240px;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-    }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 20px);
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
-    body {
-      background:
-        radial-gradient(circle at top left, rgba(255, 193, 61, 0.18), transparent 32%),
-        radial-gradient(circle at 100% 0%, rgba(141, 255, 111, 0.08), transparent 24%),
-        linear-gradient(180deg, #080808 0%, #050505 100%);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(242, 199, 92, 0.12), transparent 30%),
+    radial-gradient(circle at 100% 10%, rgba(242, 199, 92, 0.06), transparent 20%),
+    linear-gradient(180deg, #080808 0%, #040404 100%);
+  overflow-x: hidden;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
+img {
+  display: block;
+  max-width: 100%;
+}
 
-    .wrap {
-      width: min(100%, var(--content-width));
-    }
+section[id] {
+  scroll-margin-top: 0;
+}
 
-    .card {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      border-radius: var(--radius);
-      padding: 2.25rem;
-      text-align: center;
-    }
+.container {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin: 0 auto;
+}
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: -40% auto auto -20%;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(255, 191, 63, 0.16), transparent 68%);
-      pointer-events: none;
-    }
+.nav-shell > *,
+.hero-grid > *,
+.hero-actions > *,
+.hero-content > *,
+.why-grid > *,
+.tokenomics-grid > *,
+.roadmap-grid > *,
+.transparency-grid > *,
+.buy-grid > *,
+.footer-grid > * {
+  min-width: 0;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1rem;
-      border-radius: 999px;
-      background: rgba(255, 191, 63, 0.12);
-      border: 1px solid rgba(255, 191, 63, 0.24);
-      color: var(--gold-2);
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
-    }
+/* HEADER */
+.site-header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgb(8 8 8 / 50%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    .logo {
-      width: 88px;
-      height: 88px;
-      margin: 0 auto 1rem;
-      border-radius: 24px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 30px rgba(255, 191, 63, 0.22);
-      background: rgba(255,255,255,0.04);
-    }
+.nav-shell {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 7vw, 4.6rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
 
-    .gradient-text {
-      background: linear-gradient(135deg, #fff4d1 0%, #ffbf3f 45%, #88ff60 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+.brand img {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 24px rgba(242, 199, 92, 0.18);
+  flex: 0 0 auto;
+}
 
-    .subtitle {
-      margin: 1rem auto 0;
-      max-width: 34rem;
-      color: #e7dcc6;
-      font-size: 1.04rem;
-      line-height: 1.75;
-    }
+.brand-text {
+  min-width: 0;
+}
 
-    .ca-box {
-      margin: 1.75rem 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-    }
+.brand-title {
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  color: var(--gold-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .contract-code {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      border-radius: 999px;
-      padding: 0.9rem 1rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      max-width: 100%;
-      min-height: 52px;
-    }
+.brand-subtitle {
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-top: 0.18rem;
+}
 
-    .contract-code strong {
-      color: var(--gold-2);
-      font-size: 0.88rem;
-      letter-spacing: 0.06em;
-    }
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
 
-    .contract-code code {
-      font-size: 0.92rem;
-      color: #f4e7cc;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-    }
+.desktop-nav > a,
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.82rem 1rem;
+  border-radius: 999px;
+  color: #f7f0dc;
+  font-size: 0.94rem;
+  font-weight: 800;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.24s ease;
+}
 
-    .button,
-    .ghost,
-    .copy-btn,
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      border-radius: 999px;
-      padding: 0.95rem 1.2rem;
-      font-weight: 800;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
-      border: 1px solid transparent;
-      min-height: 52px;
-      cursor: pointer;
-    }
+.desktop-nav > a:hover,
+.nav-dropdown-toggle:hover,
+.desktop-nav > a:focus-visible,
+.nav-dropdown-toggle:focus-visible {
+  background: rgba(242, 199, 92, 0.12);
+  color: var(--gold-2);
+  outline: none;
+}
 
-    .button {
-      background: linear-gradient(135deg, #ffca54 0%, #ffb11d 100%);
-      color: #130d02;
-      box-shadow: 0 16px 34px rgba(255, 183, 45, 0.26);
-    }
+.nav-dropdown {
+  position: relative;
+}
 
-    .ghost,
-    .copy-btn,
-    .social-link {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
 
-    .button:hover,
-    .ghost:hover,
-    .copy-btn:hover,
-    .social-link:hover {
-      transform: translateY(-2px);
-    }
+.dropdown-caret {
+  font-size: 0.72rem;
+  opacity: 0.78;
+}
 
-    .actions,
-    .socials {
-      display: grid;
-      gap: 0.9rem;
-      margin-top: 1.5rem;
-    }
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 260px;
+  padding: 0.5rem;
+  border-radius: 18px;
+  background: rgba(12, 12, 12, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
+  display: none;
+  z-index: 1001;
+}
 
-    .actions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: grid;
+  gap: 0.3rem;
+}
 
-    .socials {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 1rem;
-    }
+.dropdown-menu a {
+  display: block;
+  padding: 0.85rem 0.95rem;
+  border-radius: 14px;
+  font-weight: 800;
+  color: #f7f0dc;
+  font-size: 0.94rem;
+}
 
-    .social-link {
-      border-radius: 18px;
-      justify-content: flex-start;
-      text-align: left;
-      padding-inline: 1rem;
-    }
+.dropdown-menu a span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
 
-    .social-link strong {
-      display: block;
-      font-size: 0.98rem;
-    }
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: rgba(242, 199, 92, 0.1);
+  color: var(--gold-2);
+  outline: none;
+}
 
-    .social-link span {
-      display: block;
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
 
-    .footer-note {
-      margin-top: 1.5rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.65;
-    }
+.button,
+.ghost-button,
+.pill,
+.buy-button,
+.social-button,
+.copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.95rem 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  font-family: inherit;
+}
 
-    @media (max-width: 640px) {
-      body {
-        padding: 16px;
-      }
+.button,
+.buy-now {
+  background: linear-gradient(135deg, #f7d770 0%, #efc14f 100%);
+  color: #151006;
+  box-shadow: 0 14px 30px rgba(242, 199, 92, 0.18);
+}
 
-      .card {
-        padding: 1.4rem;
-      }
+.ghost-button,
+.pill,
+.buy-button,
+.social-button,
+.copy-button {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.1);
+}
 
-      .actions,
-      .socials {
-        grid-template-columns: 1fr;
-      }
+.button:hover,
+.ghost-button:hover,
+.pill:hover,
+.buy-button:hover,
+.social-button:hover,
+.copy-button:hover {
+  transform: translateY(-2px);
+}
 
-      .ca-box {
-        align-items: stretch;
-      }
+.buy-now {
+  padding: 1rem 1.55rem;
+  text-align: center;
+}
 
-      .ca-box > * {
-        width: 100%;
-      }
+.hamburger {
+  display: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gold);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
 
-      .contract-code {
-        justify-content: center;
-      }
+.hamburger svg {
+  width: 26px;
+  height: 26px;
+}
 
-      .contract-code code {
-        max-width: 210px;
-      }
-    }
+.mobile-panel-wrap {
+  display: none;
+  padding-bottom: 1rem;
+}
+
+.mobile-panel-wrap.open {
+  display: block;
+}
+
+.mobile-panel {
+  border-top: 1px solid var(--line-gold);
+  background: rgba(5, 5, 5, 0.96);
+  border-radius: 0 0 26px 26px;
+  padding: 1rem 1.15rem 1.35rem;
+  box-shadow: var(--shadow);
+}
+
+.mobile-menu-list {
+  display: grid;
+  gap: 0;
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  min-width: 0;
+  padding: 0.5rem 0;
+}
+
+.mobile-menu-item:last-child {
+  border-bottom: 0;
+}
+
+.menu-icon {
+  width: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.8rem;
+  line-height: 1;
+  padding-top: 0.08rem;
+}
+
+.menu-content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.menu-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #f7f0dc;
+  margin-bottom: 0.2rem;
+}
+
+.menu-subtitle {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.menu-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.mobile-menu-item.mobile-dropdown {
+  display: block;
+  padding: 1rem 0;
+}
+
+.mobile-dropdown-toggle {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.mobile-dropdown-toggle .menu-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.menu-arrow {
+  color: #fff;
+  opacity: 0.9;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding-top: 0.3rem;
+  flex: 0 0 auto;
+}
+
+.mobile-submenu {
+  display: none;
+  width: 100%;
+  margin: 0.85rem 0 0 0;
+  padding: 0.8rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 0.55rem;
+}
+
+.mobile-dropdown.open .mobile-submenu {
+  display: grid;
+}
+
+.mobile-submenu a {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.55rem;
+  border-radius: 14px;
+}
+
+.mobile-submenu a:hover,
+.mobile-submenu a:focus-visible {
+  background: rgba(242, 199, 92, 0.08);
+  outline: none;
+}
+
+.mobile-submenu-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 1rem;
+  flex: 0 0 auto;
+  align-content: center;
+  text-align: center;
+}
+
+.mobile-submenu strong {
+  display: block;
+  font-size: 0.94rem;
+  font-weight: 900;
+  color: #f7f0dc;
+}
+
+.mobile-submenu span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.12rem;
+}
+
+main {
+  padding-top: 0.25rem;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  padding: 3.4rem 0 2rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.84) 0%, rgba(0, 0, 0, 0.64) 45%, rgba(0, 0, 0, 0.22) 100%),
+    url("assets/hero-banner.webp") center/cover no-repeat;
+  opacity: 0.95;
+  z-index: -2;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -60px 0;
+  height: 160px;
+  z-index: -1;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(242, 199, 92, 0.12);
+  border: 1px solid rgba(242, 199, 92, 0.24);
+  color: var(--gold-2);
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 900;
+
+  margin-top: 2rem;
+}
+
+.hero-content h1{
+  margin: 0 0 1rem;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff3c7 0%, #f2c75c 48%, #ffe59f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  font-size: 1.12rem;
+  line-height: 1.72;
+  color: #e8decb;
+  max-width: 62ch;
+  margin: 0 0 1rem;
+}
+
+.hero-copy {
+  font-size: 1.02rem;
+  line-height: 1.76;
+  color: #dfd4be;
+  max-width: 66ch;
+  margin: 0 0 1.1rem;
+}
+
+.trust-line {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.trust-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 900;
+  color: var(--gold-2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero-card,
+.content-card,
+.feature-card,
+.phase-card,
+.buy-card,
+.footer-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.hero-visual .hero-card {
+  overflow: hidden;
+  border-radius: 30px;
+  position: relative;
+}
+
+.hero-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.72));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-extra {
+  padding: 1.3rem;
+  margin-top: 1rem;
+}
+
+.hero-extra h3,
+.section-title,
+.card-title {
+  margin: 0 0 0.7rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-extra h3 {
+  font-size: 1.2rem;
+  color: var(--gold-2);
+}
+
+.hero-extra p,
+.card-copy {
+  color: var(--muted);
+  line-height: 1.72;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.closing-line {
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  background: rgba(242, 199, 92, 0.08);
+  border: 1px solid rgba(242, 199, 92, 0.14);
+  color: #f3e6c4;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+/* SECTIONS */
+.section {
+  padding: 1.4rem 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.02;
+  margin-bottom: 0.8rem;
+}
+
+.section-subtitle {
+  max-width: 70ch;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.why-grid,
+.tokenomics-grid,
+.roadmap-grid,
+.transparency-grid,
+.buy-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.why-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tokenomics-grid,
+.roadmap-grid,
+.transparency-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.buy-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.feature-card,
+.phase-card,
+.buy-card,
+.content-card {
+  padding: 1.4rem;
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 199, 92, 0.12);
+  color: var(--gold-2);
+  border: 1px solid rgba(242, 199, 92, 0.22);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 24px rgba(242, 199, 92, 0.08);
+}
+
+.card-title {
+  font-size: 1.12rem;
+  font-weight: 900;
+  margin-bottom: 0.65rem;
+}
+
+.bullet-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.78rem;
+}
+
+.bullet-list li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #efe5cf;
+  line-height: 1.66;
+  font-size: 0.97rem;
+}
+
+.bullet-list li span:first-child {
+  color: var(--gold-2);
+  flex: 0 0 auto;
+  font-weight: 900;
+}
+
+.phase-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.phase-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242, 199, 92, 0.12);
+  border: 1px solid rgba(242, 199, 92, 0.18);
+  color: var(--gold-2);
+  font-size: 1rem;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.phase-kicker {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.18rem;
+}
+
+.phase-title {
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.buy-topline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(242, 199, 92, 0.12);
+  border: 1px solid rgba(242, 199, 92, 0.18);
+  color: var(--gold-2);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.buy-button,
+.social-button {
+  width: 100%;
+  justify-content: flex-start;
+  border-radius: 18px;
+  padding-inline: 1rem;
+  margin-top: 1rem;
+}
+
+.buy-button strong,
+.social-button strong {
+  display: block;
+  font-size: 0.97rem;
+}
+
+.buy-button span,
+.social-button span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 700;
+  margin-top: 0.12rem;
+}
+
+.buy-button:hover span,
+.social-button:hover span {
+  color: #ddd1b4;
+}
+
+.contract-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contract-label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.contract-value {
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.5;
+  word-break: break-word;
+  color: #f2e8d0;
+}
+
+.copy-button {
+  margin-top: 0.8rem;
+  min-height: 46px;
+  width: 100%;
+  justify-content: center;
+}
+
+.important-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(242, 199, 92, 0.08);
+  border: 1px solid rgba(242, 199, 92, 0.14);
+  color: #f3e6c4;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+.footer {
+  padding: 2rem 0 6rem;
+  color: var(--muted);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  gap: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.4rem;
+}
+
+.footer-card {
+  padding: 1.2rem;
+}
+
+.footer-title {
+  color: var(--gold-2);
+  font-size: 1rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer-links a {
+  color: #eee2c7;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--gold-2);
+  outline: none;
+}
+
+.footer-note {
+  margin-top: 2.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* QUICKBAR */
+.quickbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: none;
+  gap: 0.85rem;
+  padding: 0.9rem 1rem calc(0.9rem + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.9) 25%, rgba(5, 5, 5, 1));
+  z-index: 998;
+}
+
+.quickbar .button,
+.quickbar .ghost-button {
+  flex: 1;
+  min-height: 54px;
+}
+
+/* ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1180px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  .why-grid,
+  .tokenomics-grid,
+  .roadmap-grid,
+  .transparency-grid,
+  .buy-grid,
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --header-height: 84px;
+  }
+
+  .container {
+    width: min(calc(100% - 1.25rem), var(--content-width));
+  }
+
+  .brand img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .buy-now {
+    padding: 0.95rem 1.2rem;
+  }
+
+  .hero {
+    min-height: unset;
+    padding-top: 3.4rem;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.78) 36%, rgba(0, 0, 0, 0.46) 100%),
+      url("assets/hero-banner.webp") center/cover no-repeat;
+  }
+
+  .hero-actions,
+  .trust-line {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions > *,
+  .trust-line > * {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .why-grid,
+  .tokenomics-grid,
+  .roadmap-grid,
+  .transparency-grid,
+  .buy-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quickbar {
+    display: flex;
+  }
+
+  .footer {
+    padding-bottom: 7.4rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .brand {
+    max-width: calc(100% - 136px);
+  }
+
+  .brand-title {
+    font-size: x-small;
+  }
+
+  .brand-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+    max-width: 10.5ch;
+  }
+
+  .lead,
+  .hero-copy,
+  .section-subtitle,
+  .card-copy,
+  .footer-copy {
+    font-size: 0.97rem;
+  }
+
+  .section {
+    padding: 0.4rem 0;
+  }
+
+  .hero-card img {
+    aspect-ratio: 1 / 1.08;
+  }
+
+  .mobile-panel {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .mobile-submenu {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .buy-now {
+    padding: 0.95rem 1.2rem;
+    font-size: xx-small;
+  }
+}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <div class="badge">🔥 WE DID IT — $LUXURIOUS IS NOW LIVE ON BASE 🚀💎</div>
-
-      <img class="logo" src="assets/logo-star.jpg" alt="$LUXURIOUS logo" />
-
-      <h1>
-        <span class="gradient-text">$LUXURIOUS</span><br />
-        coming soon
-      </h1>
-
-      <p class="subtitle">
-        The next phase is on the way. Follow the project, keep the contract ready, and access the live buy and chart links below.
-      </p>
-
-      <div class="ca-box">
-        <div class="contract-code" title="Base contract address">
-          <strong>CA</strong>
-          <code id="contractAddress">0x9f7161cd6bdced685585797708c62af25173ae89</code>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a href="#home" class="brand" aria-label="LUXURIOUS home">
+        <img src="assets/logo-star.jpg" alt="LUXURIOUS logo" />
+        <div class="brand-text">
+          <div class="brand-title">$LUXURIOUS</div>
+          <div class="brand-subtitle">Base &amp; Pepu</div>
         </div>
-        <button class="copy-btn" data-copy="0x9f7161cd6bdced685585797708c62af25173ae89">Copy CA</button>
-      </div>
+      </a>
 
-      <div class="actions">
-        <a class="button" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">Buy</a>
-        <a class="ghost" href="https://dexscreener.com/base/0x8453e8a37505e6172b00Ef2878A5869c313F3e7D" target="_blank" rel="noopener noreferrer">Chart</a>
-      </div>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#why">Why LUXURIOUS</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#transparency">Transparency</a>
 
-      <div class="socials">
-        <a class="social-link" href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">
-          <div>
-            <strong>Telegram</strong>
-            <span>Join the community</span>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button">
+            Buy <span class="dropdown-caret">▾</span>
+          </button>
+          <div class="dropdown-menu">
+              <a href="#buy">
+				Buy/Chart on Base & PEPU.
+                  <span>Get $LUXURIOUS Links</span>
+			  </a>		  
+            <a href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">
+              Buy on Base (Uniswap)
+              <span>Get $LUXURIOUS on Base</span>
+            </a>
+            <a href="https://pepubank.net/tokens/0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+              Buy on PEPU (PenkMarket)
+              <span>Pay with ETH or USDC</span>
+            </a>			
+            <a href="https://pepuswap.com/#/swap?outputCurrency=0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+              Buy on PEPU (Pepuswap)
+              <span>Get $LUXURIOUS on PEPU</span>
+            </a>
+
           </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button">
+            Community <span class="dropdown-caret">▾</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">
+              Telegram
+              <span>Join our Telegram</span>
+            </a>
+            <a href="https://x.com/DJDean4You" target="_blank" rel="noopener noreferrer">
+              X (Twitter)
+              <span>Follow us on X</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a class="button buy-now" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">
+          🚀 BUY NOW
         </a>
 
-        <a class="social-link" href="https://x.com/DJDean4You" target="_blank" rel="noopener noreferrer">
-          <div>
-            <strong>X / Twitter</strong>
-            <span>Follow updates</span>
-          </div>
-        </a>
+        <button class="hamburger" id="menuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobilePanelWrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </button>
       </div>
+    </div>
 
-      <p class="footer-note">
-        $LUXURIOUS — Building bridges. Creating visibility. Driving ecosystems.
-      </p>
+    <div class="container mobile-panel-wrap" id="mobilePanelWrap">
+      <div class="mobile-panel">
+        <div class="mobile-menu-list">
+          <div class="mobile-menu-item">
+            <a class="menu-link" href="#home">
+              <div class="menu-icon">🏠</div>
+              <div class="menu-content">
+                <div class="menu-title">Home</div>
+                <div class="menu-subtitle">Welcome to LUXURIOUS</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mobile-menu-item">
+            <a class="menu-link" href="#why">
+              <div class="menu-icon">💎</div>
+              <div class="menu-content">
+                <div class="menu-title">Why LUXURIOUS</div>
+                <div class="menu-subtitle">The vision. The mission. The future.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mobile-menu-item">
+            <a class="menu-link" href="#tokenomics">
+              <div class="menu-icon">📊</div>
+              <div class="menu-content">
+                <div class="menu-title">Tokenomics</div>
+                <div class="menu-subtitle">Transparent. Structured. Sustainable.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mobile-menu-item">
+            <a class="menu-link" href="#roadmap">
+              <div class="menu-icon">🗺️</div>
+              <div class="menu-content">
+                <div class="menu-title">Roadmap</div>
+                <div class="menu-subtitle">Our plan for long-term growth.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mobile-menu-item">
+            <a class="menu-link" href="#transparency">
+              <div class="menu-icon">🔒</div>
+              <div class="menu-content">
+                <div class="menu-title">Transparency</div>
+                <div class="menu-subtitle">Security, trust &amp; wallet structure.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mobile-menu-item mobile-dropdown">
+            <button class="mobile-dropdown-toggle" type="button">
+              <div class="menu-icon">🛒</div>
+              <div class="menu-content">
+                <div class="menu-title">Buy</div>
+                <div class="menu-subtitle">Buy/Chart on Base & PEPU.</div>
+              </div>
+              <div class="menu-arrow">⌄</div>
+            </button>
+
+            <div class="mobile-submenu">
+			
+              <a class="menu-link" href="#buy">
+			    <span class="mobile-submenu-icon">💎</span>
+                <div>
+                  <strong>Buy $LUXURIOUS</strong>
+                  <span>Get $LUXURIOUS Links</span>
+                </div>
+			  </a>
+			  <a href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">
+                <span class="mobile-submenu-icon">🟦</span>
+                <div>
+                  <strong>Buy on Base (Uniswap)</strong>
+                  <span>Get $LUXURIOUS on Base</span>
+                </div>
+              </a>
+              <a href="https://pepubank.net/tokens/0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+                <span class="mobile-submenu-icon">₱</span>
+                <div>
+                  <strong>Buy on PEPU (PenkMarket)</strong>
+                  <span>Pay with ETH or USDC</span>
+                </div>
+              </a>
+              <a href="https://pepuswap.com/#/swap?outputCurrency=0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+                <span class="mobile-submenu-icon">🐸</span>
+                <div>
+                  <strong>Buy on PEPU (Pepuswap)</strong>
+                  <span>Get $LUXURIOUS on PEPU</span>
+                </div>
+              </a>
+
+
+            </div>
+          </div>
+
+          <div class="mobile-menu-item mobile-dropdown">
+            <button class="mobile-dropdown-toggle" type="button">
+              <div class="menu-icon">👥</div>
+              <div class="menu-content">
+                <div class="menu-title">Community</div>
+                <div class="menu-subtitle">Join the movement</div>
+              </div>
+              <div class="menu-arrow">⌄</div>
+            </button>
+
+            <div class="mobile-submenu">
+              <a href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">
+                <span class="mobile-submenu-icon">✈️</span>
+                <div>
+                  <strong>Telegram</strong>
+                  <span>Join our Telegram</span>
+                </div>
+              </a>
+
+              <a href="https://x.com/DJDean4You" target="_blank" rel="noopener noreferrer">
+                <span class="mobile-submenu-icon">𝕏</span>
+                <div>
+                  <strong>X (Twitter)</strong>
+                  <span>Follow us on X</span>
+                </div>
+              </a>
+			  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal visible">
+          <div class="eyebrow">Marketing &amp; Visibility for Crypto Ecosystems</div>
+
+          <h2>
+            <span class="gradient-text">LUXURIOUS</span> –<br />
+            Building Visibility in Crypto
+          </h2>
+
+          <p class="lead">
+            A marketing-driven ecosystem connecting projects, communities and growth across Base and Pepe Unchained.
+          </p>
+
+          <div class="hero-copy">
+            LUXURIOUS is more than just a token.<br />
+            It is designed to increase visibility, connect communities and support projects across ecosystems.
+            <br />
+            We focus on long-term growth, real partnerships and organic expansion.
+          </div>
+
+          <div class="trust-line">
+            <span class="trust-chip">0% Tax</span>
+            <span class="trust-chip">LP Locked</span>
+            <span class="trust-chip">Transparent Structure</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+            <a class="ghost-button" href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">JOIN TELEGRAM</a>
+            <a class="pill" href="https://x.com/DJDean4You" target="_blank" rel="noopener noreferrer">FOLLOW ON X</a>
+            <a class="pill" href="https://linktr.ee/bigcryptobull" target="_blank" rel="noopener noreferrer">LINKTREE</a>			
+          </div>
+
+          <div class="hero-extra content-card">
+            <h3>Early Stage Opportunity</h3>
+            <p>
+              LUXURIOUS is still in an early phase with strong growth potential.
+              <br /><br />
+              Built with a clear structure and long-term vision, the project is focused on sustainable development rather than short-term hype.
+            </p>
+            <div class="closing-line">Be early. Build with us.</div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-card">
+            <img src="assets/brand-poster.jpg" alt="LUXURIOUS brand artwork" />
+            <div class="hero-overlay">
+              <div class="card-copy">
+                Long-term growth. Real partnerships. Organic expansion.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<section class="section" id="why">
+	  <div class="container">
+		<h2 class="section-title reveal">Why LUXURIOUS?</h2>
+		<p class="section-subtitle reveal">
+		  Most crypto projects fail because they lack visibility.
+		  <br /><br />
+		  LUXURIOUS is built to solve exactly that.
+		</p>
+
+		<div class="why-grid">
+		  <article class="feature-card reveal">
+			<div class="card-icon">📣</div>
+			<div class="card-title">Marketing &amp; Visibility Layer</div>
+			<div class="card-copy">
+			  LUXURIOUS focuses on increasing exposure and connecting projects, helping ecosystems grow together.
+			</div>
+		  </article>
+
+		  <article class="feature-card reveal">
+			<div class="card-icon">🌐</div>
+			<div class="card-title">Multi-Chain Vision</div>
+			<div class="card-copy">
+			  Starting on Pepe Unchained L2 and expanding to Base, LUXURIOUS is designed to operate across ecosystems.
+			</div>
+		  </article>
+
+		  <article class="feature-card reveal">
+			<div class="card-icon">🏗️</div>
+			<div class="card-title">Real Growth Approach</div>
+			<div class="card-copy">
+			  No artificial hype. No shortcuts. Only structured, long-term building.
+			</div>
+		  </article>
+
+		  <article class="feature-card reveal">
+			<div class="card-icon">🚀</div>
+			<div class="card-title">Early Opportunity</div>
+			<div class="card-copy">
+			  LUXURIOUS is still in an early stage, offering strong upside potential for early supporters.
+			</div>
+		  </article>
+
+		  <article class="feature-card reveal" style="grid-column: 1 / -1;">
+			<div class="card-icon">🤝</div>
+			<div class="card-title">Community Driven</div>
+			<div class="card-copy">
+			  The project grows with its community. Every supporter is part of the journey.
+			</div>
+		  </article>
+		</div>
+
+
+
+		<div class="closing-line reveal">
+			LUXURIOUS is not just another token.
+			<br />
+			We are building a marketing and visibility layer for crypto ecosystems.
+			<br />
+			As more projects launch and need exposure, LUXURIOUS positions itself at the center of growth, branding and community expansion.
+			<br />
+			We connect projects, communities and visibility across chains.
+			<br />
+			This creates long-term relevance — not short-term hype.
+			<br />
+			We are still early.
+			<br />
+			The expansion to Base has just started.		
+		  We are not here for quick pumps.
+		  <br />
+		  We are building something that lasts.
+		  <br /><br />
+		  Be early. Be part of LUXURIOUS.
+		</div>
+	  </div>
+	</section>
+
+    <section class="section" id="tokenomics">
+      <div class="container">
+        <h2 class="section-title reveal">Tokenomics</h2>
+        <p class="section-subtitle reveal">
+          LUXURIOUS is built with a clear and structured allocation to support long-term growth and sustainability.
+        </p>
+
+        <div class="tokenomics-grid">
+          <article class="content-card reveal">
+            <div class="card-icon">🔒</div>
+            <div class="card-title">Liquidity Pool – ~50%</div>
+            <div class="card-copy">
+              Provides trading stability and ensures smooth market activity.
+              Liquidity is locked via TeamFinance.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">👤</div>
+            <div class="card-title">Team Allocation – ~20%</div>
+            <div class="card-copy">
+              Reserved for long-term development and project building.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">🌍</div>
+            <div class="card-title">Ecosystem &amp; Marketing – ~20%</div>
+            <div class="card-copy">
+              Used for partnerships, growth and expanding the LUXURIOUS ecosystem.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">🏦</div>
+            <div class="card-title">Treasury – ~10%</div>
+            <div class="card-copy">
+              Allocated for future development, tools and strategic opportunities.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+
+            <div class="card-icon">🧭</div>
+            <div class="card-title">Structure &amp; Transparency</div>
+            <div class="card-copy">
+              The team allocation is held in structured wallets and used responsibly for development and growth.
+              <br /><br />
+              There are no hidden wallets and no uncontrolled token distribution.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+
+            <div class="card-icon">✅</div>
+            <div class="card-title">Key Facts</div>
+
+
+            <ul class="bullet-list">
+              <li><span>•</span><span>0% buy / sell tax</span></li>
+              <li><span>•</span><span>No mint function</span></li>
+              <li><span>•</span><span>No honeypot</span></li>
+              <li><span>•</span><span>Transparent allocation</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="closing-line reveal">
+          Designed for long-term building — not short-term hype.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container">
+        <h2 class="section-title reveal">Roadmap</h2>
+        <p class="section-subtitle reveal">
+          LUXURIOUS is built step by step with a clear long-term vision.
+          <br /><br />
+          We focus on sustainable growth, real partnerships and continuous development.
+        </p>
+
+        <div class="roadmap-grid">
+          <article class="phase-card reveal">
+            <div class="phase-head">
+              <div class="phase-badge">1</div>
+              <div>
+                <div class="phase-kicker">Phase 1</div>
+                <div class="phase-title">Foundation</div>
+              </div>
+            </div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>Project launch</span></li>
+              <li><span>•</span><span>Brand identity development</span></li>
+              <li><span>•</span><span>Social channels setup (X, Telegram, CMC)</span></li>
+              <li><span>•</span><span>Initial community building</span></li>
+              <li><span>•</span><span>First partnerships on Pepe Unchained L2</span></li>
+            </ul>
+          </article>
+
+          <article class="phase-card reveal">
+            <div class="phase-head">
+              <div class="phase-badge">2</div>
+              <div>
+                <div class="phase-kicker">Phase 2</div>
+                <div class="phase-title">Growth</div>
+              </div>
+            </div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>Expansion of marketing activities</span></li>
+              <li><span>•</span><span>Strategic partnerships within the ecosystem</span></li>
+              <li><span>•</span><span>Community growth and engagement</span></li>
+              <li><span>•</span><span>Increased visibility across platforms</span></li>
+            </ul>
+          </article>
+
+          <article class="phase-card reveal">
+            <div class="phase-head">
+              <div class="phase-badge">3</div>
+              <div>
+                <div class="phase-kicker">Phase 3</div>
+                <div class="phase-title">Base Expansion</div>
+              </div>
+            </div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>Launch on Base</span></li>
+              <li><span>•</span><span>Cross-chain presence (PEPU L2 + Base)</span></li>
+              <li><span>•</span><span>New collaborations and integrations</span></li>
+              <li><span>•</span><span>Expansion of reach beyond one ecosystem</span></li>
+            </ul>
+          </article>
+
+          <article class="phase-card reveal">
+            <div class="phase-head">
+              <div class="phase-badge">4</div>
+              <div>
+                <div class="phase-kicker">Phase 4</div>
+                <div class="phase-title">Ecosystem Development</div>
+              </div>
+            </div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>Development of marketing tools</span></li>
+              <li><span>•</span><span>Campaign and promotion systems</span></li>
+              <li><span>•</span><span>Support for partner projects</span></li>
+              <li><span>•</span><span>Long-term ecosystem growth</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="closing-line reveal">
+          We are building step by step — with a long-term vision.
+          <br /><br />
+          LUXURIOUS is here to grow.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transparency">
+      <div class="container">
+        <h2 class="section-title reveal">Transparency &amp; Security</h2>
+        <p class="section-subtitle reveal">
+          LUXURIOUS is built with a strong focus on transparency and long-term trust.
+          <br /><br />
+          We believe that open communication and clear structure are the foundation of a sustainable project.
+        </p>
+
+        <div class="transparency-grid">
+          <article class="content-card reveal">
+            <div class="card-icon">🛡️</div>
+            <div class="card-title">Security</div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>0% buy / sell tax</span></li>
+              <li><span>•</span><span>No mint function</span></li>
+              <li><span>•</span><span>No honeypot</span></li>
+              <li><span>•</span><span>LP locked via TeamFinance</span></li>
+            </ul>
+            <div class="important-box" style="margin-top:1rem;">
+              All core mechanics are designed to ensure a fair and secure environment for holders.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">📄</div>
+            <div class="card-title">Smart Contract Notes</div>
+            <div class="card-copy">
+              Some security functions such as pause or blacklist exist for protection purposes only.
+              <br /><br />
+              They are not used to restrict normal trading or harm users.
+            </div>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">👛</div>
+            <div class="card-title">Wallet Transparency</div>
+            <ul class="bullet-list">
+              <li><span>•</span><span>Team-controlled wallets are used for development, marketing and growth</span></li>
+              <li><span>•</span><span>No random or hidden whale wallets</span></li>
+              <li><span>•</span><span>Tokens are allocated with long-term vision</span></li>
+              <li><span>•</span><span>No early dumping strategy</span></li>
+            </ul>
+          </article>
+
+          <article class="content-card reveal">
+            <div class="card-icon">🌱</div>
+            <div class="card-title">Early Stage Structure</div>
+            <div class="card-copy">
+              High holder concentration is normal in the early phase of a project.
+              <br /><br />
+              As the project grows, distribution will naturally expand.
+            </div>
+          </article>
+
+          <article class="content-card reveal" style="grid-column: 1 / -1;">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Commitment</div>
+            <div class="card-copy">
+              We are not here for quick hype.
+              <br /><br />
+              We are building LUXURIOUS step by step with a focus on trust, structure and long-term growth.
+            </div>
+          </article>
+        </div>
+
+        <div class="closing-line reveal">
+          Transparency is not optional — it is the foundation.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="buy">
+      <div class="container">
+        <h2 class="section-title reveal">Buy LUXURIOUS</h2>
+        <p class="section-subtitle reveal">
+          LUXURIOUS is available across multiple platforms.
+          Choose your preferred option and join early.
+        </p>
+
+        <div class="buy-grid">
+          <article class="buy-card reveal">
+
+            <div class="card-icon">🟦</div>
+            <div class="buy-topline">Main Chain</div>			
+            <div class="card-title">Buy on Base (Uniswap V3)</div>
+            <div class="card-copy">
+              The main trading pool for LUXURIOUS is on Base via Uniswap V3.
+              <br /><br />
+              Fast, secure and decentralized.
+            </div>
+            <a class="buy-button" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>💎 BUY ON BASE</strong>
+                <span>Official Uniswap V3 link</span>
+              </div>
+            </a>
+            <a class="buy-button" href="https://dexscreener.com/base/0x8453e8a37505e6172b00Ef2878A5869c313F3e7D" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>📊 Live Chart (BASE)</strong>
+                <span></span>
+              </div>
+            </a>			
+          </article>
+
+          <article class="buy-card reveal">
+            <div class="card-icon">₱</div>
+            <div class="card-title">Buy via PenkMarket (PEPU Chain)</div>
+            <div class="card-copy">
+              Purchase LUXURIOUS easily within the Pepe Unchained ecosystem.
+              <br /><br />
+              PenkMarket is part of the PEPU environment.
+            </div>
+            <a class="buy-button" href="https://pepubank.net/tokens/0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>💎 BUY ON PENKMARKET</strong>
+                <span>ETH / USDC access</span>
+              </div>
+            </a>
+            <a class="buy-button" href="https://www.geckoterminal.com/de/pepe-unchained/pools/0xa30f9765f0d6d4037d1d5440f86ddd14a1d8e1a4" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>📊 Live Chart (PEPU)</strong>
+                <span></span>
+              </div>
+            </a>			
+          </article>
+
+          <article class="buy-card reveal">
+            <div class="card-icon">🐸</div>
+            <div class="card-title">Buy on Pepe Unchained L2 (PepuSwap)</div>
+            <div class="card-copy">
+              Trade LUXURIOUS directly on Pepe Unchained L2 via PepuSwap.
+              <br /><br />
+              Be part of the ecosystem where it all started.
+            </div>
+            <a class="buy-button" href="https://pepuswap.com/#/swap?outputCurrency=0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>💎 BUY ON PEPUSWAP</strong>
+                <span>Pepe Unchained L2</span>
+              </div>
+            </a>
+            <a class="buy-button" href="https://www.geckoterminal.com/de/pepe-unchained/pools/0xa30f9765f0d6d4037d1d5440f86ddd14a1d8e1a4" target="_blank" rel="noopener noreferrer">
+              <div>
+                <strong>📊 Live Chart (PEPU)</strong>
+                <span></span>
+              </div>
+            </a>			
+          </article>
+        </div>
+
+        <div class="content-card reveal" style="margin-top: 1.2rem;">
+          <div class="card-icon">📍</div>
+          <div class="card-title">Contract Address</div>
+          <div class="card-copy">
+            Always verify the official contract before buying.
+          </div>
+
+          <div class="contract-box">
+            <div class="contract-label">CA (Base)</div>
+            <div class="contract-value" id="baseContract">0x9f7161cd6bdced685585797708c62af25173ae89</div>
+            <button class="copy-button" data-copy="0x9f7161cd6bdced685585797708c62af25173ae89">Copy Base Contract</button>
+          </div>
+          <div class="contract-box">
+            <div class="contract-label">CA (PEPU)</div>
+            <div class="contract-value" id="pepuContract">0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7</div>
+            <button class="copy-button" data-copy="0xf5cb0ffe8df1e931bd8c1cd5be84ed4d8e1400f7">Copy PEPU Contract</button>
+          </div>
+          <div class="important-box">
+            <strong>Important</strong>
+            <br />
+            – 0% buy / sell tax
+            <br />
+            – Only standard DEX fee applies
+            <br />
+            – Always use official links
+          </div>
+
+          <div class="closing-line">Still early. Build with us.</div>
+        </div>
+      </div>
     </section>
   </main>
 
+  <footer class="footer">
+    <div class="container">
+
+
+      <div class="footer-card">
+        <div class="footer-title">Security Note</div>
+        <div class="footer-copy">
+          Always verify official links.
+          We never DM first.
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-note">
+      © LUXURIOUS – All rights reserved<br />
+	  Powered by <a href="https://www.toshtech.xyz" target="_blank" rel="noopener noreferrer" style="color: var(--gold-2);">Toshtech</a>
+	</div>
+  </footer>
+
+  <div class="quickbar" aria-label="mobile quick actions">
+    <a class="ghost-button" href="https://t.me/BigCryptoBullLuxurious" target="_blank" rel="noopener noreferrer">Telegram</a>
+    <a class="button" href="https://app.uniswap.org/swap?outputCurrency=0x9f7161cd6bdced685585797708c62af25173ae89&amp;chain=base" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+  </div>
+
   <script>
-    document.querySelectorAll('[data-copy]').forEach(button => {
-      button.addEventListener('click', async () => {
-        const text = button.getAttribute('data-copy');
+    const menuToggle = document.getElementById("menuToggle");
+    const mobilePanelWrap = document.getElementById("mobilePanelWrap");
+    const mobileLinks = mobilePanelWrap ? mobilePanelWrap.querySelectorAll("a") : [];
+    const mobileDropdowns = document.querySelectorAll(".mobile-dropdown");
+
+    if (menuToggle && mobilePanelWrap) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mobilePanelWrap.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+    }
+
+    mobileDropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector(".mobile-dropdown-toggle");
+      if (!toggle) return;
+
+      toggle.addEventListener("click", () => {
+        dropdown.classList.toggle("open");
+      });
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (mobilePanelWrap) {
+          mobilePanelWrap.classList.remove("open");
+        }
+        if (menuToggle) {
+          menuToggle.setAttribute("aria-expanded", "false");
+        }
+        mobileDropdowns.forEach((dropdown) => dropdown.classList.remove("open"));
+      });
+    });
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const text = button.getAttribute("data-copy");
         const original = button.textContent;
         try {
           await navigator.clipboard.writeText(text);
-          button.textContent = 'Copied ✓';
+          button.textContent = "Copied ✓";
         } catch (error) {
-          button.textContent = 'Copy failed';
+          button.textContent = "Copy failed";
         }
         window.setTimeout(() => {
           button.textContent = original;
         }, 1600);
       });
     });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>

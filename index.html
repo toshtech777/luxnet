@@ -524,10 +524,9 @@ main {
 
 .hero-content h2 {
   margin: 0 0 1rem;
-  font-size: clamp(2.6rem, 6vw, 5rem);
+
   line-height: 0.94;
   letter-spacing: -0.04em;
-  max-width: 12ch;
   color: var(--text);
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
@@ -1067,11 +1066,6 @@ main {
     font-size: 0.8rem;
   }
 
-  .hero-content h2 {
-    font-size: clamp(2.2rem, 11vw, 3.4rem);
-    max-width: 10.5ch;
-  }
-
   .lead,
   .hero-copy,
   .section-subtitle,
@@ -1214,18 +1208,15 @@ strong {
 /* fix hero heading selector because your HTML uses h2, not h1 */
 .hero-content h2 {
   margin: 0 0 1rem !important;
-  font-size: clamp(2.6rem, 6vw, 5rem) !important;
+
   line-height: 0.94 !important;
   letter-spacing: -0.04em !important;
-  max-width: 12ch !important;
   justify-self: center;
 }
 
 /* mobile hero heading */
 @media (max-width: 680px) {
   .hero-content h2 {
-    font-size: clamp(2.2rem, 11vw, 3.4rem) !important;
-    max-width: 10.5ch !important;
 	justify-self: center;
   }
 }
